@@ -21,6 +21,10 @@ public class App extends Application {
     private Set<Activity> allActivities;
 
     public static synchronized App getInstance(){return instance;}
+
+//    static {
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//    }
     @Override
     public void onCreate() {
         super.onCreate();
