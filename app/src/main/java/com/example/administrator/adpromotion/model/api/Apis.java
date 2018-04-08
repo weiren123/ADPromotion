@@ -10,7 +10,7 @@ import retrofit2.http.GET;
  */
 
 public interface Apis {
-    String HOST = "http://10.63.205.74:5000/";
+    String HOST = "http://192.168.1.100:5000/";
 
     @GET("startimage")
     Flowable<WelcomeBaen> getWelcomeInfo();

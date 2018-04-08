@@ -2,6 +2,7 @@ package com.example.administrator.adpromotion.base.contract;
 
 import com.example.administrator.adpromotion.base.BasePresenter;
 import com.example.administrator.adpromotion.base.BaseView;
+import com.example.administrator.adpromotion.model.WelcomeBaen;
 
 /**
  * @author
@@ -10,7 +11,7 @@ import com.example.administrator.adpromotion.base.BaseView;
 
 public interface WelcomeContract {
     interface View extends BaseView{
-        void showContent();
+        void showContent(WelcomeBaen welcomeBaen);
 
         void joinMain();
     }

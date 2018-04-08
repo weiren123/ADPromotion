@@ -2,8 +2,6 @@ package com.example.administrator.adpromotion.model;
 
 import com.example.administrator.adpromotion.model.http.HttpHelper;
 
-import javax.inject.Inject;
-
 import io.reactivex.Flowable;
 
 /**
@@ -12,7 +10,6 @@ import io.reactivex.Flowable;
 
 public class DataManager implements HttpHelper {
     HttpHelper httpHelper;
-    @Inject
     public DataManager(HttpHelper httpHelper){
         this.httpHelper = httpHelper;
     }

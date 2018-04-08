@@ -43,7 +43,11 @@ public class HttpModule {
     Retrofit provideADRetrofit(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, Apis.HOST);
     }
-
+    @Singleton
+    @Provides
+    Apis provideApis(@ADUrl Retrofit retrofit) {
+        return retrofit.create(Apis.class);
+    }
     @Singleton
     @Provides
     OkHttpClient provideClient(OkHttpClient.Builder builder) {

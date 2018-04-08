@@ -30,15 +30,25 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implemen
         .subscribe(new Consumer<WelcomeBaen>() {
             @Override
             public void accept(@NonNull WelcomeBaen welcomeBaen) throws Exception {
-                Logger.e(welcomeBaen.getImg());
+                mView.showContent(welcomeBaen);
+                Logger.e("respon:___"+welcomeBaen.getImg());
+
+//                try {
+//                    Thread.sleep(3000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }finally {
+//                    mView.joinMain();
+//                }
+            }
+        },new Consumer<Throwable>(){
+
+            @Override
+            public void accept(@NonNull Throwable throwable) throws Exception {
+                Logger.e("reeor:___"+throwable.getMessage());
             }
         }));
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }finally {
-            mView.joinMain();
-        }
+
+
     }
 }
