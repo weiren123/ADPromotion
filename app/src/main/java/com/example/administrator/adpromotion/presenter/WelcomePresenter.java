@@ -7,8 +7,11 @@ import com.example.administrator.adpromotion.model.WelcomeBaen;
 import com.example.administrator.adpromotion.utils.RxUtil;
 import com.orhanobut.logger.Logger;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Inject;
 
+import io.reactivex.Flowable;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 
@@ -18,7 +21,7 @@ import io.reactivex.functions.Consumer;
 
 public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implements WelcomeContract.Presenter {
     private DataManager dataManager;
-
+    private static final int COUNT_DOWN_TIME = 2200;
     @Inject
     public WelcomePresenter(DataManager dataManager){
         this.dataManager = dataManager;
@@ -32,23 +35,29 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implemen
             public void accept(@NonNull WelcomeBaen welcomeBaen) throws Exception {
                 mView.showContent(welcomeBaen);
                 Logger.e("respon:___"+welcomeBaen.getImg());
-
-//                try {
-//                    Thread.sleep(3000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }finally {
-//                    mView.joinMain();
-//                }
+                startCountDown();
             }
         },new Consumer<Throwable>(){
 
             @Override
             public void accept(@NonNull Throwable throwable) throws Exception {
                 Logger.e("reeor:___"+throwable.getMessage());
+                mView.joinMain();
             }
         }));
 
+
+    }
+
+    private void startCountDown() {
+        addSubscribe(Flowable.timer(COUNT_DOWN_TIME, TimeUnit.MILLISECONDS)
+        .compose(RxUtil.<Long>rxSchedulerHelper())
+        .subscribe(new Consumer<Long>() {
+            @Override
+            public void accept(@NonNull Long aLong) throws Exception {
+                mView.joinMain();
+            }
+        }));
 
     }
 }
