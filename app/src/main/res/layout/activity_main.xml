@@ -37,6 +37,11 @@
                 android:layout_height="match_parent">
 
             </android.support.design.widget.TabLayout>
+            android:layout_height="match_parent">
+            <com.tencent.tencentmap.mapsdk.maps.MapView
+                android:id="@+id/mapview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
         </LinearLayout>
         <android.support.design.widget.NavigationView
             android:id="@+id/navigation"
