@@ -2,6 +2,8 @@ package com.example.administrator.adpromotion.app;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.example.administrator.adpromotion.di.component.AppComponent;
 import com.example.administrator.adpromotion.di.component.DaggerAppComponent;
@@ -31,7 +33,11 @@ public class App extends Application {
         instance = this;
 
     }
-
+    @Override
+    public void attachBaseContext(Context base) {
+        MultiDex.install(base);
+        super.attachBaseContext(base);
+    }
 
 
     public void addActivity(Activity act) {

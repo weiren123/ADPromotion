@@ -10,12 +10,9 @@ import android.widget.TextView;
 import com.example.administrator.adpromotion.R;
 import com.example.administrator.adpromotion.base.BaseActivity;
 import com.example.administrator.adpromotion.base.contract.MainContract;
+import com.example.administrator.adpromotion.model.DataManager;
 import com.example.administrator.adpromotion.presenter.MainPresenter;
-import com.orhanobut.logger.Logger;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tencent.map.geolocation.TencentLocationListener;
-import com.tencent.map.geolocation.TencentLocationManager;
-import com.tencent.map.geolocation.TencentLocationRequest;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdate;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
 import com.tencent.tencentmap.mapsdk.maps.MapView;
@@ -25,7 +22,7 @@ import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View,TencentLocationListener {
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
 
     @BindView(R.id.mapview)
     MapView mapview;
@@ -37,9 +34,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     ImageView imageView4;
     @BindView(R.id.navigation)
     NavigationView navigation;
-    private TencentLocationManager mLocationManager;
     private TencentMap tencentMap;
-    private TencentLocation mLocation;
+    private CameraUpdate cameraSigma;
 
     @Override
     protected int getLayoutView() {
@@ -48,34 +44,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     protected void initData() {
-        mLocationManager = TencentLocationManager.getInstance(mContext);
+        checkPermissions();
         tencentMap = mapview.getMap();
-//        //设置卫星底图
-//        tencentMap.setSatelliteEnabled(true);
-//        //设置实时路况开启
-//        tencentMap.setTrafficEnabled(true);
-//        //设置地图中心点
-        tencentMap.setPointToCenter(39, 116);
+        //        //设置地图中心点
+        tencentMap.setPointToCenter(39, 162);
 //        //设置缩放级别
         tencentMap.setMinZoomLevel(9);
-
-
-        imageView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mLocation != null) {
-
-                    // 地图视图
-                    CameraUpdate cameraSigma = CameraUpdateFactory.newCameraPosition(new CameraPosition(
-                            new LatLng(mLocation.getLatitude(), mLocation.getLongitude()), //新的中心点坐标
-                            19,     // 新的缩放级别
-                            0f,     // 俯仰角 0~45° (垂直地图时为0)
-                            0f));   // 偏航角 0~360° (正北方为0)
-                    // 移动地图
-                    tencentMap.moveCamera(cameraSigma);
-                }
-            }
-        });
     }
 
     @Override
@@ -89,8 +63,38 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     @Override
-    public void showMap(TencentLocation mLocation) {
+    public void showMap(CameraUpdate cameraUpdate) {
+        tencentMap.moveCamera(cameraUpdate);
+    }
 
+    @Override
+    public void loctionMe(DataManager dataManager) {
+        final float latitude = dataManager.getLocationLongInfo();
+        final float longitude = dataManager.getLocationLongInfo();
+        imageView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 地图视图
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(
+                        new CameraPosition(
+                                new LatLng(latitude, longitude), //新的中心点坐标
+                                19,     // 新的缩放级别
+                                0f,     // 俯仰角 0~45° (垂直地图时为0)
+                                0f));// 偏航角 0~360° (正北方为0)
+// 移动地图
+                tencentMap.moveCamera(cameraUpdate);
+            }
+        });
+    }
+
+    @Override
+    public void setPointToCenter(int latLng, int longitude) {
+        //        //设置地图中心点
+        tencentMap.setPointToCenter(latLng, longitude);
+    }
+
+    public void checkPermissions() {
+        mPresenter.checkPermissions(new RxPermissions(this));
     }
 
 
@@ -103,61 +107,26 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     protected void onResume() {
         super.onResume();
         mapview.onResume();
-        startLocation();
+        mPresenter.startLocation();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         mapview.onPause();
-        stopLocation();
+        mPresenter.stopLocation();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         mapview.onStop();
-//        stopLocation();
+        mPresenter.stopLocation();
     }
 
     @Override
     protected void onDestroy() {
         mapview.onDestroy();
         super.onDestroy();
-    }
-
-    @Override
-    public void onLocationChanged(TencentLocation tencentLocation, int error, String s) {
-        Logger.e(tencentLocation.getCity());
-        if (error == TencentLocation.ERROR_OK) {
-            mLocation = tencentLocation;
-            Logger.e(mLocation.getAddress());
-            if (mLocation != null) {
-
-                // 地图视图
-                CameraUpdate cameraSigma = CameraUpdateFactory.newCameraPosition(new CameraPosition(
-                        new LatLng(mLocation.getLatitude(), mLocation.getLongitude()), //新的中心点坐标
-                        19,     // 新的缩放级别
-                        0f,     // 俯仰角 0~45° (垂直地图时为0)
-                        0f));   // 偏航角 0~360° (正北方为0)
-                // 移动地图
-                tencentMap.moveCamera(cameraSigma);
-            }
-        }
-    }
-
-    @Override
-    public void onStatusUpdate(String s, int i, String s1) {
-
-    }
-
-    public void startLocation() {
-        TencentLocationRequest request = TencentLocationRequest.create();
-        request.setInterval(5000);
-        int flag = mLocationManager.requestLocationUpdates(request, this);
-        Logger.e(flag+"");
-    }
-    public void stopLocation() {
-        mLocationManager.removeUpdates(this);
     }
 }

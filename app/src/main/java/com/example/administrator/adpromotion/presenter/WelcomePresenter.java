@@ -19,7 +19,7 @@ import io.reactivex.functions.Consumer;
  * Created by Administrator on 2018/3/28.
  */
 
-public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implements WelcomeContract.Presenter {
+public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implements WelcomeContract.Presenter{
     private DataManager dataManager;
     private static final int COUNT_DOWN_TIME = 2200;
     @Inject

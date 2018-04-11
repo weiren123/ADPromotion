@@ -5,6 +5,7 @@ import com.example.administrator.adpromotion.di.module.AppModule;
 import com.example.administrator.adpromotion.di.module.HttpModule;
 import com.example.administrator.adpromotion.model.DataManager;
 import com.example.administrator.adpromotion.model.http.RetrofitHelper;
+import com.example.administrator.adpromotion.model.prefs.ImplPreferencesHelper;
 
 import javax.inject.Singleton;
 
@@ -23,4 +24,6 @@ public interface AppComponent {
     DataManager getDataManager(); //数据中心
 
     RetrofitHelper retrofitHelper();  //提供http的帮助类
+
+    ImplPreferencesHelper preferencesHelper();//提供sp的帮助类
 }

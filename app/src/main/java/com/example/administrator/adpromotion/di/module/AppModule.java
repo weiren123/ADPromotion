@@ -4,6 +4,8 @@ import com.example.administrator.adpromotion.app.App;
 import com.example.administrator.adpromotion.model.DataManager;
 import com.example.administrator.adpromotion.model.http.HttpHelper;
 import com.example.administrator.adpromotion.model.http.RetrofitHelper;
+import com.example.administrator.adpromotion.model.prefs.ImplPreferencesHelper;
+import com.example.administrator.adpromotion.model.prefs.Preferenceshelper;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -35,7 +37,12 @@ public class AppModule {
 
     @Provides
     @Singleton
-    DataManager provideDataManager(HttpHelper httpHelper) {
-        return new DataManager(httpHelper);
+    Preferenceshelper providePreferencesHelper(ImplPreferencesHelper implPreferencesHelper) {
+        return implPreferencesHelper;
+    }
+    @Provides
+    @Singleton
+    DataManager provideDataManager(HttpHelper httpHelper, Preferenceshelper preferenceshelper) {
+        return new DataManager(httpHelper,preferenceshelper);
     }
 }
