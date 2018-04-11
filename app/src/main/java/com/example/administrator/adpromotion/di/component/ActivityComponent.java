@@ -5,6 +5,7 @@ import android.app.Activity;
 
 import com.example.administrator.adpromotion.di.module.ActivityModule;
 import com.example.administrator.adpromotion.di.spoce.ActivityScope;
+import com.example.administrator.adpromotion.ui.MainActivity;
 import com.example.administrator.adpromotion.ui.WelcomeActivity;
 
 import dagger.Component;
@@ -17,5 +18,8 @@ import dagger.Component;
 @Component(dependencies = AppComponent.class,modules = ActivityModule.class)
 public interface ActivityComponent {
     Activity getActivity();
+
     void inject(WelcomeActivity welcomeActivity);
+
+    void inject(MainActivity mainActivity);
 }
