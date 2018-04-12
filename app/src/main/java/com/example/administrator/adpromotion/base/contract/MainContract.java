@@ -15,7 +15,7 @@ public interface MainContract {
         void showUpdateDialog(String versionContent);
         void showMap(CameraUpdate cameraUpdate);
         void loctionMe(DataManager dataManager);
-         void setPointToCenter(int latLng, int longitude);
+         void setPointToCenter(CameraUpdate cameraUpdate);
     }
      interface Presenter extends BasePresenter<View>{
         void checkPermissions(RxPermissions permissions);

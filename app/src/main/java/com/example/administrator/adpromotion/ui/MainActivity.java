@@ -69,28 +69,37 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public void loctionMe(DataManager dataManager) {
-        final float latitude = dataManager.getLocationLongInfo();
-        final float longitude = dataManager.getLocationLongInfo();
+        float latitude = dataManager.getLocationLongInfo();
+        float longitude = dataManager.getLocationLongInfo();
+        latitude = (float)36;
+        longitude = (float) 162;
+        final double finalLatitude = latitude;
+        final double finalLongitude = longitude;
+
+        // 移动地图
+        tencentMap.moveCamera(cameraSigma);
         imageView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 地图视图
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(
                         new CameraPosition(
-                                new LatLng(latitude, longitude), //新的中心点坐标
+                                new LatLng(finalLatitude, finalLongitude), //新的中心点坐标
                                 19,     // 新的缩放级别
                                 0f,     // 俯仰角 0~45° (垂直地图时为0)
                                 0f));// 偏航角 0~360° (正北方为0)
-// 移动地图
-                tencentMap.moveCamera(cameraUpdate);
+            // 移动地图
+                mapview.getMap().setPointToCenter((int)finalLatitude,(int) finalLongitude);
+                mapview.getMap().animateCamera(cameraUpdate);
+//                tencentMap.moveCamera(cameraUpdate);
             }
         });
     }
 
     @Override
-    public void setPointToCenter(int latLng, int longitude) {
-        //        //设置地图中心点
-        tencentMap.setPointToCenter(latLng, longitude);
+    public void setPointToCenter(CameraUpdate cameraUpdate) {
+        // 移动地图
+        tencentMap.animateCamera(cameraUpdate);
     }
 
     public void checkPermissions() {

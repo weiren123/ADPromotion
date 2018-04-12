@@ -13,6 +13,10 @@ import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;
 import com.tencent.map.geolocation.TencentLocationRequest;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdate;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 import javax.inject.Inject;
 
@@ -66,8 +70,14 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
             if (mLocation != null) {
                 mDataManager.saveLocationLatInfo((float) mLocation.getLatitude());
                 mDataManager.saveLocationLongtInfo((float) mLocation.getLongitude());
-
-                mView.loctionMe(mDataManager);
+                // 地图视图
+                CameraUpdate cameraSigma = CameraUpdateFactory.newCameraPosition(new CameraPosition(
+                        new LatLng(mLocation.getLatitude(), mLocation.getLongitude()), //新的中心点坐标
+                        19,     // 新的缩放级别
+                        0f,     // 俯仰角 0~45° (垂直地图时为0)
+                        0f));   // 偏航角 0~360° (正北方为0)
+                mView.setPointToCenter(cameraSigma);
+//                mView.loctionMe(mDataManager);
             }
             Logger.e(mLocation.getAddress());
 //            if (mLocation != null) {
@@ -81,13 +91,14 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
     public void onStatusUpdate(String s, int i, String s1) {
         Logger.e(s+":onStatusUpdate"+"--i="+i+"--s1="+s1);
     }
-
+    @Override
     public void startLocation() {
         TencentLocationRequest request = TencentLocationRequest.create();
         request.setInterval(5000);
         int flag = mLocationManager.requestLocationUpdates(request, this);
         Logger.e(flag+"");
     }
+    @Override
     public void stopLocation() {
         mLocationManager.removeUpdates(this);
     }
