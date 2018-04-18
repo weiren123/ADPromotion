@@ -18,8 +18,13 @@ public class DataManager implements HttpHelper,Preferenceshelper {
     }
 
     @Override
-    public Flowable<WelcomeBaen> fetchWelcomeInfo() {
-        return httpHelper.fetchWelcomeInfo();
+    public Flowable<WelcomeBaen> fetchWelcomeInfo(String s1,String s2,String s3,String s4) {
+        return httpHelper.fetchWelcomeInfo(s1,s2,s3,s4);
+    }
+
+    @Override
+    public Flowable<FirstBean> fetchFirstDataInfo() {
+        return httpHelper.fetchFirstDataInfo();
     }
 
     @Override

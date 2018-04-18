@@ -5,22 +5,22 @@ package com.example.administrator.adpromotion.model;
  */
 
 public class WelcomeBaen {
-    String text;
-    String img;
+    String code;
+    String msg;
 
-    public String getText() {
-        return text;
+    public String getCode() {
+        return code;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getImg() {
-        return img;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

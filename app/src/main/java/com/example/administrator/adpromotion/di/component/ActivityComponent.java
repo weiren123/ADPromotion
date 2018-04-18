@@ -5,6 +5,7 @@ import android.app.Activity;
 
 import com.example.administrator.adpromotion.di.module.ActivityModule;
 import com.example.administrator.adpromotion.di.spoce.ActivityScope;
+import com.example.administrator.adpromotion.ui.FirstActivity;
 import com.example.administrator.adpromotion.ui.MainActivity;
 import com.example.administrator.adpromotion.ui.WelcomeActivity;
 
@@ -22,4 +23,6 @@ public interface ActivityComponent {
     void inject(WelcomeActivity welcomeActivity);
 
     void inject(MainActivity mainActivity);
+
+    void inject(FirstActivity firstActivity);
 }

@@ -4,6 +4,7 @@ import com.example.administrator.adpromotion.base.RxPresenter;
 import com.example.administrator.adpromotion.base.contract.WelcomeContract;
 import com.example.administrator.adpromotion.model.DataManager;
 import com.example.administrator.adpromotion.model.WelcomeBaen;
+import com.example.administrator.adpromotion.model.bean.Entity;
 import com.example.administrator.adpromotion.utils.RxUtil;
 import com.orhanobut.logger.Logger;
 
@@ -28,13 +29,19 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implemen
     }
     @Override
     public void getWelcomeData() {
-        addSubscribe(dataManager.fetchWelcomeInfo()
+        Entity entity = new Entity();
+        entity.setTelephone("15122041234");
+        entity.setUsername("admin");
+        entity.setPassword1("1234");
+        entity.setPassword2("1234");
+        addSubscribe(dataManager.fetchWelcomeInfo("15122041234","admin","123","123")
         .compose(RxUtil.<WelcomeBaen>rxSchedulerHelper())
         .subscribe(new Consumer<WelcomeBaen>() {
             @Override
             public void accept(@NonNull WelcomeBaen welcomeBaen) throws Exception {
                 mView.showContent(welcomeBaen);
-                Logger.e("respon:___"+welcomeBaen.getImg());
+                Logger.e("respon:___"+welcomeBaen.getCode());
+                Logger.e("respon:___"+welcomeBaen.getMsg());
                 startCountDown();
             }
         },new Consumer<Throwable>(){

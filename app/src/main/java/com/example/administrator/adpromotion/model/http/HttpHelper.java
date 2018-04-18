@@ -1,5 +1,6 @@
 package com.example.administrator.adpromotion.model.http;
 
+import com.example.administrator.adpromotion.model.FirstBean;
 import com.example.administrator.adpromotion.model.WelcomeBaen;
 
 import io.reactivex.Flowable;
@@ -10,5 +11,7 @@ import io.reactivex.Flowable;
 
 public interface HttpHelper {
 
-    Flowable<WelcomeBaen> fetchWelcomeInfo();
+    Flowable<WelcomeBaen> fetchWelcomeInfo(String s1,String s2,String s3,String s4);
+
+    Flowable<FirstBean> fetchFirstDataInfo();
 }

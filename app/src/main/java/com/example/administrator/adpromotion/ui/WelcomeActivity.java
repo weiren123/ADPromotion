@@ -7,10 +7,8 @@ import android.widget.ImageView;
 import com.example.administrator.adpromotion.R;
 import com.example.administrator.adpromotion.base.BaseActivity;
 import com.example.administrator.adpromotion.base.contract.WelcomeContract;
-import com.example.administrator.adpromotion.component.ImageLoader;
 import com.example.administrator.adpromotion.model.WelcomeBaen;
 import com.example.administrator.adpromotion.presenter.WelcomePresenter;
-import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,15 +21,15 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
 
     @Override
     public void showContent(WelcomeBaen welcomeBaen) {
-        String str_img = welcomeBaen.getImg();
-        String img = str_img.split("'")[1];
-        Logger.d(img);
-        ImageLoader.loadimg(this, img, imageView);
+//        String str_img = welcomeBaen.getImg();
+//        String img = str_img.split("'")[1];
+//        Logger.d(img);
+//        ImageLoader.loadimg(this, img, imageView);
     }
 
     @Override
     public void joinMain() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, FirstActivity.class);
         startActivity(intent);
         finish();
     }

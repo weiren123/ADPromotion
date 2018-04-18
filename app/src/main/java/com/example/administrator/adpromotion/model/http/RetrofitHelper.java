@@ -1,5 +1,6 @@
 package com.example.administrator.adpromotion.model.http;
 
+import com.example.administrator.adpromotion.model.FirstBean;
 import com.example.administrator.adpromotion.model.WelcomeBaen;
 import com.example.administrator.adpromotion.model.api.Apis;
 
@@ -20,7 +21,12 @@ public class RetrofitHelper implements HttpHelper {
     }
 
     @Override
-    public Flowable<WelcomeBaen> fetchWelcomeInfo() {
-        return apis.getWelcomeInfo();
+    public Flowable<WelcomeBaen> fetchWelcomeInfo(String s1,String s2,String s3,String s4) {
+        return apis.getWelcomeInfo(s1,s2,s3,s4);
+    }
+
+    @Override
+    public Flowable<FirstBean> fetchFirstDataInfo() {
+        return apis.getFirstData();
     }
 }
