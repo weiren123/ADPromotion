@@ -13,11 +13,11 @@ import com.example.administrator.adpromotion.presenter.FirstPresenter;
 import com.example.administrator.adpromotion.ui.adapter.FirsrAdapter;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+
 
 public class FirstActivity extends BaseActivity<FirstPresenter> implements FirstContract.View {
 
@@ -57,8 +57,8 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
         titles.add("三");
         //设置banner样式
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
-        //设置banner动画效果
-        banner.setBannerAnimation(Transformer.DepthPage);
+//        //设置banner动画效果
+//        banner.setBannerAnimation(Transformer.DepthPage);
         //设置图片加载器
         banner.setImageLoader(new GlideImageLoader());
         //设置标题集合（当banner样式有显示title时）

@@ -14,8 +14,9 @@ import retrofit2.http.POST;
  */
 
 public interface Apis {
-    String HOST = "http://10.63.205.74:5000/";
-
+//    String HOST = "http://10.63.205.74:5000/";
+    String HOST = "http://192.168.1.104:5000/";
+        //192.168.1.104
     @POST("regist/")
     @FormUrlEncoded
     Flowable<WelcomeBaen> getWelcomeInfo(@Field("telephone") String telephone,
