@@ -8,4 +8,7 @@
     <color name="drawer_header_text">#2c2c2c</color>
     <color name="drawer_item_bg_p">#e8e8e8</color>
     <color name="drawer_item_bg_line">#b6b6b6</color>
+    <color name="btn_bg">#e45e10</color>
+    <color name="red">#FF4120</color>
+    <color name="unenable_color">#999999</color>
 </resources>

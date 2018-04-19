@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_bg">
+
+    <ImageView
+        android:id="@+id/login_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:src="@mipmap/registered_close" />
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="15dp"
+        android:layout_below="@id/login_back"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="30dp"
+        android:layout_below="@id/login_logo"
+        android:layout_centerHorizontal="true"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/login_phone"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawableLeft="@mipmap/registered_phone"
+            android:drawableBottom="@mipmap/login_line"
+            android:hint="@string/MSG020015"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:textColorHint="@color/unenable_color"
+            android:textColor="@color/colorBack"
+            android:maxLength="11"
+            android:background="@null" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/login_pwsd"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawableLeft="@mipmap/registered_password"
+                android:drawableBottom="@mipmap/login_line"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:hint="@string/MSG020021"
+                android:textColorHint="@color/unenable_color"
+                android:textColor="@color/colorBack"
+                android:background="@null" />
+
+            <TextView
+                android:id="@+id/login_forget_pswd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBack"
+                android:text="@string/MSG020013"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@color/colorBack"
+            android:text="@string/MSG020018"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:background="@drawable/btn_circle_border" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/login_next_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBack"
+            android:text="@string/MSG020012"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@mipmap/registered_bottom_arrowhead" />
+    </LinearLayout>
+</RelativeLayout>

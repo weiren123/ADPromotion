@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">ADPromotion</string>
     <string name="app_intro">AD....Promotion</string>
+    <string name="answer_content">东风农机的房贷放开点附近的开发
+        的空间访客的房价的空间费德勒放开对方的开发了的开发东风农机
+        的房贷放开点附近的开发的空间访客的房价的空间费德勒放开对方
+        的开发了的开发</string>
+    <string name="MSG020015">请输入手机号</string>
+    <string name="MSG020020">请输入验证码</string>
+    <string name="MSG020021">请输入密码</string>
+    <string name="MSG020013">忘记密码</string>
+    <string name="MSG020018">登录</string>
+    <string name="MSG020012">没有账号，去注册</string>
+    <string name="MSG020016">有账号，去登录</string>
+    <string name="MSG020014">获取验证码</string>
+    <string name="MSG020017">我已阅读并同意《用户服务条款》</string>
+    <string name="MSG020019">注册</string>
 </resources>

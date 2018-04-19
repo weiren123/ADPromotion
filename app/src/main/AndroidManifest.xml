@@ -52,7 +52,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.ShowActivity" />
-        <activity android:name=".ui.FirstActivity"></activity>
+        <activity android:name=".ui.FirstActivity" />
+        <activity android:name=".ui.JUserDetailActivity" />
+        <activity android:name=".ui.JUserSendActivity" />
+        <activity android:name=".ui.SUserAnswerActivity"></activity>
     </application>
 
 </manifest>
