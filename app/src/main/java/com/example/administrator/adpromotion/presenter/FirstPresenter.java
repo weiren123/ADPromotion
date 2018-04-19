@@ -42,4 +42,5 @@ public class FirstPresenter extends RxPresenter<FirstContract.View> implements F
 
         mView.showBanner();
     }
+
 }

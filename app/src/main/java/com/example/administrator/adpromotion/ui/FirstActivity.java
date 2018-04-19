@@ -1,8 +1,9 @@
 package com.example.administrator.adpromotion.ui;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
+import android.view.View;
 
 import com.example.administrator.adpromotion.R;
 import com.example.administrator.adpromotion.base.BaseActivity;
@@ -11,6 +12,7 @@ import com.example.administrator.adpromotion.component.GlideImageLoader;
 import com.example.administrator.adpromotion.model.FirstBean;
 import com.example.administrator.adpromotion.presenter.FirstPresenter;
 import com.example.administrator.adpromotion.ui.adapter.FirsrAdapter;
+import com.example.administrator.adpromotion.ui.adapter.OnItemClickListener;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
@@ -21,17 +23,15 @@ import butterknife.BindView;
 
 public class FirstActivity extends BaseActivity<FirstPresenter> implements FirstContract.View {
 
-    @BindView(R.id.button)
-    Button button;
     @BindView(R.id.banner)
     Banner banner;
-    @BindView(R.id.button2)
-    Button button2;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
     ArrayList titles = new ArrayList<>();
     ArrayList images = new ArrayList<>();
+    private FirsrAdapter mAdapter;
+
     @Override
     protected int getLayoutView() {
         return R.layout.activity_first;
@@ -72,7 +72,18 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
     @Override
     public void showList(FirstBean firstBean) {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        FirsrAdapter mAdapter = new FirsrAdapter(this,firstBean);
+        mAdapter = new FirsrAdapter(this,firstBean);
         recyclerView.setAdapter(mAdapter);
+        if(mAdapter!=null){
+            mAdapter.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    Intent intent =new Intent(getBaseContext(),MainActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
     }
+
 }

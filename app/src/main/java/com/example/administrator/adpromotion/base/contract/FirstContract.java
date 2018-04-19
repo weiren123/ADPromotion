@@ -11,7 +11,9 @@ import com.example.administrator.adpromotion.model.FirstBean;
 public interface FirstContract{
     interface View extends BaseView{
         void showBanner();
+
         void showList(FirstBean firstBean);
+
     }
 
     interface Presenter extends BasePresenter<View>{

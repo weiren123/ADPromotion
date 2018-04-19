@@ -53,7 +53,7 @@ public class FirstBean {
          */
 
         private String age;
-        private Object avatar;
+        private String avatar;
         private int userid;
         private String username;
         private String usertype;
@@ -66,11 +66,11 @@ public class FirstBean {
             this.age = age;
         }
 
-        public Object getAvatar() {
+        public String getAvatar() {
             return avatar;
         }
 
-        public void setAvatar(Object avatar) {
+        public void setAvatar(String avatar) {
             this.avatar = avatar;
         }
 

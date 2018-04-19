@@ -5,11 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.administrator.adpromotion.R;
+import com.example.administrator.adpromotion.component.ImagesLoader;
 import com.example.administrator.adpromotion.model.FirstBean;
+import com.example.administrator.adpromotion.model.api.Apis;
 import com.example.administrator.adpromotion.ui.FirstActivity;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +28,11 @@ public class FirsrAdapter extends RecyclerView.Adapter<FirsrAdapter.ViewHolder> 
     private final FirstBean firstbean;
     private final FirstActivity context;
 
+    private OnItemClickListener mOnItemClickListener;//声明接口
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
 
     public FirsrAdapter(FirstActivity firstActivity, FirstBean firstBean) {
         this.firstbean = firstBean;
@@ -38,9 +47,23 @@ public class FirsrAdapter extends RecyclerView.Adapter<FirsrAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.textView.setText(firstbean.getBody().get(position).getUsername());
-            holder.textView3.setText(firstbean.getBody().get(position).getAge());
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+            holder.textView4.setText(firstbean.getBody().get(position).getUsername());
+            holder.textView7.setText(firstbean.getBody().get(position).getAge());
+        String avatar = firstbean.getBody().get(position).getAvatar();
+        String headerimg = Apis.HOST+"static/image/"+avatar+".jpg";
+        Logger.e("headerimg:"+avatar);
+        ImagesLoader.loadRoundImg(context, headerimg,holder.imageView2);
+
+        if (mOnItemClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = holder.getLayoutPosition();
+                    mOnItemClickListener.onItemClick(holder.itemView, position);
+                }
+            });
+        }
     }
 
     @Override
@@ -49,15 +72,28 @@ public class FirsrAdapter extends RecyclerView.Adapter<FirsrAdapter.ViewHolder> 
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+//        View itemView;
+        @BindView(R.id.imageView2)
+        ImageView imageView2;
+        @BindView(R.id.textView4)
+        TextView textView4;
+        @BindView(R.id.textView7)
+        TextView textView7;
+        @BindView(R.id.linearLayout)
+        LinearLayout linearLayout;
+        @BindView(R.id.textView9)
+        TextView textView9;
+        @BindView(R.id.textView10)
+        TextView textView10;
         @BindView(R.id.imageView5)
         ImageView imageView5;
-        @BindView(R.id.textView)
-        TextView textView;
-        @BindView(R.id.textView3)
-        TextView textView3;
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+//            this.itemView = itemView;
+            ButterKnife.bind(this, itemView);
         }
     }
+
+
+
 }
