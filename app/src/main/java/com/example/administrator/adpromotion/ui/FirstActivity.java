@@ -70,7 +70,7 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
     }
 
     @Override
-    public void showList(FirstBean firstBean) {
+    public void showList(final FirstBean firstBean) {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new FirsrAdapter(this,firstBean);
         recyclerView.setAdapter(mAdapter);
@@ -78,7 +78,11 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
             mAdapter.setOnItemClickListener(new OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
-                    Intent intent =new Intent(getBaseContext(),MainActivity.class);
+                    Intent intent =new Intent(getBaseContext(),JUserDetailActivity.class);
+                    intent.putExtra("userid",firstBean.getBody().get(position).getUserid());
+                    intent.putExtra("userage",firstBean.getBody().get(position).getAge());
+                    intent.putExtra("useravatar",firstBean.getBody().get(position).getAvatar());
+                    intent.putExtra("username",firstBean.getBody().get(position).getUsername());
                     startActivity(intent);
                 }
             });

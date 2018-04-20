@@ -13,7 +13,6 @@ import com.example.administrator.adpromotion.component.ImagesLoader;
 import com.example.administrator.adpromotion.model.FirstBean;
 import com.example.administrator.adpromotion.model.api.Apis;
 import com.example.administrator.adpromotion.ui.FirstActivity;
-import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,8 +51,18 @@ public class FirsrAdapter extends RecyclerView.Adapter<FirsrAdapter.ViewHolder> 
             holder.textView7.setText(firstbean.getBody().get(position).getAge());
         String avatar = firstbean.getBody().get(position).getAvatar();
         String headerimg = Apis.HOST+"static/image/"+avatar+".jpg";
-        Logger.e("headerimg:"+avatar);
         ImagesLoader.loadRoundImg(context, headerimg,holder.imageView2);
+
+//        Bitmap bg = BitmapFactory.decodeResource(context.getResources(),R.mipmap.login_bg);
+//        int size = Math.min(bg.getWidth(), bg.getHeight());
+//        ByteArrayOutputStream dataByte = new ByteArrayOutputStream();
+//        bg.compress(Bitmap.CompressFormat.JPEG, 100, dataByte);
+//        BitmapFactory.Options opts = new BitmapFactory.Options();
+//        opts.inSampleSize = size;
+//        opts.inPreferredConfig = Bitmap.Config.ARGB_8888;
+//        holder.imageView5.setImageBitmap(bg);
+//        Bitmap result = BitmapFactory.decodeByteArray(dataByte.toByteArray(),0, dataByte.size(), opts);
+//        holder.imageView5.setImageBitmap(result);
 
         if (mOnItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +81,6 @@ public class FirsrAdapter extends RecyclerView.Adapter<FirsrAdapter.ViewHolder> 
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-//        View itemView;
         @BindView(R.id.imageView2)
         ImageView imageView2;
         @BindView(R.id.textView4)
@@ -89,11 +97,7 @@ public class FirsrAdapter extends RecyclerView.Adapter<FirsrAdapter.ViewHolder> 
         ImageView imageView5;
         public ViewHolder(View itemView) {
             super(itemView);
-//            this.itemView = itemView;
             ButterKnife.bind(this, itemView);
         }
     }
-
-
-
 }

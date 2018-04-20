@@ -10,12 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
         <RelativeLayout
+            android:id="@+id/user_bg"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:background="@mipmap/index_10">
             <ImageView
+                android:id="@+id/head_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_launcher_round"
@@ -32,6 +35,7 @@
                 android:textSize="18sp"
                 android:gravity="center"/>
             <TextView
+                android:id="@+id/tx_sex"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -40,6 +44,10 @@
                 android:gravity="right|center"
                 android:layout_marginRight="20dp"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/drawer_item_bg_line"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp">
@@ -51,6 +59,7 @@
                 android:textSize="18sp"
                 android:gravity="center"/>
             <TextView
+                android:id="@+id/tx_nick"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -59,6 +68,10 @@
                 android:gravity="right|center"
                 android:layout_marginRight="20dp"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/drawer_item_bg_line"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp">
@@ -70,6 +83,7 @@
                 android:textSize="18sp"
                 android:gravity="center"/>
             <TextView
+                android:id="@+id/tx_birthday"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -78,9 +92,13 @@
                 android:gravity="right|center"
                 android:layout_marginRight="20dp"/>
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/drawer_item_bg_line"/>
     </LinearLayout>
     <TextView
+        android:id="@+id/tx_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="发起述求"

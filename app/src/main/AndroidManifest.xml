@@ -51,7 +51,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.ShowActivity" />
         <activity android:name=".ui.FirstActivity" />
         <activity android:name=".ui.JUserDetailActivity" />
         <activity android:name=".ui.JUserSendActivity" />
