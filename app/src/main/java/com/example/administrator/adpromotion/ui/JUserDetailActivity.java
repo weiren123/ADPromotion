@@ -1,5 +1,7 @@
 package com.example.administrator.adpromotion.ui;
 
+import android.content.Intent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -7,8 +9,11 @@ import android.widget.TextView;
 import com.example.administrator.adpromotion.R;
 import com.example.administrator.adpromotion.base.BaseActivity;
 import com.example.administrator.adpromotion.base.contract.JUserContract;
-import com.example.administrator.adpromotion.model.FirstBean;
+import com.example.administrator.adpromotion.component.ImagesLoader;
+import com.example.administrator.adpromotion.model.api.Apis;
 import com.example.administrator.adpromotion.presenter.JUserPresenter;
+
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -46,8 +51,33 @@ public class JUserDetailActivity extends BaseActivity<JUserPresenter> implements
     }
 
     @Override
-    public void showUserInfo(FirstBean firstBean) {
-//            txSex.setText(firstBean.getBody().get());
+    public void showUserInfo(Map params) {
+        String sex = (String) params.get("usersex");
+        String username = (String) params.get("username");
+        String userbirthday = (String) params.get("userbirthday");
+        String userage = (String) params.get("userage");
+        String useravatar = (String) params.get("useravatar");
+        if("1".equals(sex)){
+            txSex.setText("男");
+        }else {
+            txSex.setText("女");
+        }
+        txNick.setText(username);
+        txBirthday.setText(userbirthday);
+        String headerimg = Apis.HOST+"static/image/"+useravatar+".jpg";
+        ImagesLoader.loadRoundImg(this,headerimg,headIcon);
+    }
+
+    @Override
+    public void eventSend(final int userId) {
+        txSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),JUserSendActivity.class);
+                intent.putExtra("userid",userId);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

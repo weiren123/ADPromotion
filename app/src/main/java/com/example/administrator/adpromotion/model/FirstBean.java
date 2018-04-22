@@ -10,13 +10,23 @@ public class FirstBean {
 
 
     /**
-     * body : [{"age":"18","avatar":null,"userid":2,"username":"qqq","usertype":"1"},{"age":"18","avatar":null,"userid":3,"username":"qqq","usertype":"1"},{"age":"18","avatar":null,"userid":4,"username":"qqq","usertype":"1"},{"age":"18","avatar":null,"userid":5,"username":"qqq","usertype":"1"},{"age":"18","avatar":null,"userid":6,"username":"admin","usertype":"1"}]
+     * body : [{"age":"16","avatar":"7EBDBD4E5AAB002BCCCA952F737E6DF3","birthday":"1998-06-24","sex":"","userid":1,"username":"admin","usertype":"1"},{"age":"18","avatar":"00218F966B8AD6266209BF82833D85F8","birthday":"1998-07-26","sex":"0","userid":2,"username":"111","usertype":"1"},{"age":"18","avatar":"FEA96BE5F08B3C44948B73944BC23152","birthday":"1994-07-09","sex":"0","userid":3,"username":"admin","usertype":"1"},{"age":"18","avatar":"0C43724A20AE71E105FD96F4DE5F1E4B","birthday":"1991-08-09","sex":"0","userid":4,"username":"qwe","usertype":"1"},{"age":"18","avatar":null,"birthday":"1991-08-09","sex":"0","userid":5,"username":"qweq","usertype":"1"}]
      * code : success
      * msg : 成功
      */
 
     private String code;
     private String msg;
+    /**
+     * age : 16
+     * avatar : 7EBDBD4E5AAB002BCCCA952F737E6DF3
+     * birthday : 1998-06-24
+     * sex :
+     * userid : 1
+     * username : admin
+     * usertype : 1
+     */
+
     private List<BodyBean> body;
 
     public String getCode() {
@@ -44,16 +54,10 @@ public class FirstBean {
     }
 
     public static class BodyBean {
-        /**
-         * age : 18
-         * avatar : null
-         * userid : 2
-         * username : qqq
-         * usertype : 1
-         */
-
         private String age;
         private String avatar;
+        private String birthday;
+        private String sex;
         private int userid;
         private String username;
         private String usertype;
@@ -72,6 +76,22 @@ public class FirstBean {
 
         public void setAvatar(String avatar) {
             this.avatar = avatar;
+        }
+
+        public String getBirthday() {
+            return birthday;
+        }
+
+        public void setBirthday(String birthday) {
+            this.birthday = birthday;
+        }
+
+        public String getSex() {
+            return sex;
+        }
+
+        public void setSex(String sex) {
+            this.sex = sex;
         }
 
         public int getUserid() {

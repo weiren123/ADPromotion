@@ -1,4 +1,4 @@
-package com.example.administrator.adpromotion.ui.adapter;
+package com.example.administrator.adpromotion.ui.comment;
 
 import android.view.View;
 

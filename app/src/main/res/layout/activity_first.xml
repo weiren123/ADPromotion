@@ -29,18 +29,24 @@
             android:layout_height="60dp"
             android:layout_alignParentBottom="true">
             <TextView
-                android:background="#ff0000"
+                android:id="@+id/tv_juser"
+                android:background="@color/colorAccent"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="我的"
+                android:textColor="@color/colorBack"
                 android:gravity="center"/>
             <TextView
-                android:background="#ffff00"
+                android:id="@+id/tv_suser"
+                android:layout_margin="5dp"
+                android:background="@color/colorAccent"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="你的"
+                android:textColor="@color/colorBack"
                 android:gravity="center"/>
         </LinearLayout>
     </RelativeLayout>

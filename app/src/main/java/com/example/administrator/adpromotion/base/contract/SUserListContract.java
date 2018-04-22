@@ -1,26 +1,18 @@
 package com.example.administrator.adpromotion.base.contract;
 
-import android.app.Activity;
-
 import com.example.administrator.adpromotion.base.BasePresenter;
 import com.example.administrator.adpromotion.base.BaseView;
-
-import java.util.Map;
+import com.example.administrator.adpromotion.model.SUserListBean;
 
 /**
- * Created by Administrator on 2018/4/20.
+ * Created by Administrator on 2018/4/21.
  */
 
-public interface JUserContract {
+public interface SUserListContract {
     interface View extends BaseView{
-        void showUserInfo(Map params);
-
-        void eventSend(int str);
+        void showList(SUserListBean sUserListBean);
     }
     interface Presenter extends BasePresenter<View>{
-        void getJuserDataInfo();
-
-        void getFirsrData(Activity context);
-
+        void getSuserData(int id);
     }
 }

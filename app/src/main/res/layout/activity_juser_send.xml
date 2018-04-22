@@ -15,12 +15,14 @@
             android:layout_gravity="center_vertical">
 
             <ImageView
+                android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:src="@mipmap/u1060" />
 
             <TextView
+                android:id="@+id/tv_send"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -31,6 +33,7 @@
         </RelativeLayout>
 
         <EditText
+            android:id="@+id/et_conntent"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="10dp"
@@ -46,6 +49,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true">
         <TextView
+            android:id="@+id/tv_show_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/colorAccent"
@@ -56,6 +60,7 @@
             android:textSize="16sp"
             android:padding="13dp"/>
         <TextView
+            android:id="@+id/tv_show_module"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/colorAccent"

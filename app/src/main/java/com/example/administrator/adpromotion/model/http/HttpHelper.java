@@ -1,6 +1,8 @@
 package com.example.administrator.adpromotion.model.http;
 
+import com.example.administrator.adpromotion.model.CommentBean;
 import com.example.administrator.adpromotion.model.FirstBean;
+import com.example.administrator.adpromotion.model.SUserListBean;
 import com.example.administrator.adpromotion.model.WelcomeBaen;
 
 import io.reactivex.Flowable;
@@ -14,4 +16,10 @@ public interface HttpHelper {
     Flowable<WelcomeBaen> fetchWelcomeInfo(String s1,String s2,String s3,String s4);
 
     Flowable<FirstBean> fetchFirstDataInfo();
+
+    Flowable<CommentBean> fetchSendData(int s1,String s2,String s3,int s4);
+
+    Flowable<SUserListBean> fetchGetSListData(int id);
+
+    Flowable<CommentBean> fetchaddAnswerData(int s1,String s2,int s3);
 }

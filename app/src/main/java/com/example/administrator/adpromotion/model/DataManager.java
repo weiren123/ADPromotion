@@ -28,6 +28,21 @@ public class DataManager implements HttpHelper,Preferenceshelper {
     }
 
     @Override
+    public Flowable<CommentBean> fetchSendData(int s1,String s2,String s3,int s4) {
+        return httpHelper.fetchSendData(s1,s2,s3,s4);
+    }
+
+    @Override
+    public Flowable<SUserListBean> fetchGetSListData(int id) {
+        return httpHelper.fetchGetSListData(id);
+    }
+
+    @Override
+    public Flowable<CommentBean> fetchaddAnswerData(int s1, String s2, int s3) {
+        return httpHelper.fetchaddAnswerData(s1,s2,s3);
+    }
+
+    @Override
     public void saveLocationLatInfo(float latitude) {
         preferencesHeller.saveLocationLatInfo(latitude);
     }

@@ -8,6 +8,9 @@ import com.example.administrator.adpromotion.model.DataManager;
 import com.example.administrator.adpromotion.model.FirstBean;
 import com.example.administrator.adpromotion.utils.RxUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import io.reactivex.annotations.NonNull;
@@ -33,7 +36,7 @@ public class JUserPresenter extends RxPresenter<JUserContract.View> implements J
         .subscribe(new Consumer<FirstBean>() {
             @Override
             public void accept(@NonNull FirstBean firstBean) throws Exception {
-                mView.showUserInfo(firstBean);
+//                mView.showUserInfo(firstBean);
             }
         }, new Consumer<Throwable>() {
             @Override
@@ -45,11 +48,19 @@ public class JUserPresenter extends RxPresenter<JUserContract.View> implements J
 
     @Override
     public void getFirsrData(Activity context) {
-        String userId = context.getIntent().getStringExtra("userid");
+        int userId = context.getIntent().getIntExtra("userid",0);
         String userAge = context.getIntent().getStringExtra("userage");
         String userAvatar = context.getIntent().getStringExtra("useravatar");
         String userName = context.getIntent().getStringExtra("username");
-        FirstBean userDeail = new FirstBean();
-//        mView.showUserInfo(firstBean);
+        String userSex = context.getIntent().getStringExtra("usersex");
+        String userBirthday = context.getIntent().getStringExtra("userbirthday");
+        Map params = new HashMap<>();
+        params.put("userage",userAge);
+        params.put("useravatar",userAvatar);
+        params.put("username",userName);
+        params.put("userbirthday",userBirthday);
+        params.put("usersex",userSex);
+        mView.showUserInfo(params);
+        mView.eventSend(userId);
     }
 }

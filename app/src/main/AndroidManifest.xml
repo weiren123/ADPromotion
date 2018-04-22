@@ -54,7 +54,8 @@
         <activity android:name=".ui.FirstActivity" />
         <activity android:name=".ui.JUserDetailActivity" />
         <activity android:name=".ui.JUserSendActivity" />
-        <activity android:name=".ui.SUserAnswerActivity"></activity>
+        <activity android:name=".ui.SUserAnswerActivity" />
+        <activity android:name=".ui.SUserListActivity"></activity>
     </application>
 
 </manifest>
