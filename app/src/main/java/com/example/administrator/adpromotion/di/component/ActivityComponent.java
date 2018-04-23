@@ -8,7 +8,9 @@ import com.example.administrator.adpromotion.di.spoce.ActivityScope;
 import com.example.administrator.adpromotion.ui.FirstActivity;
 import com.example.administrator.adpromotion.ui.JUserDetailActivity;
 import com.example.administrator.adpromotion.ui.JUserSendActivity;
+import com.example.administrator.adpromotion.ui.LoginActivity;
 import com.example.administrator.adpromotion.ui.MainActivity;
+import com.example.administrator.adpromotion.ui.RegistActivity;
 import com.example.administrator.adpromotion.ui.SUserAnswerActivity;
 import com.example.administrator.adpromotion.ui.SUserListActivity;
 import com.example.administrator.adpromotion.ui.WelcomeActivity;
@@ -37,4 +39,8 @@ public interface ActivityComponent {
     void inject(SUserListActivity sUserListActivity);
 
     void inject(SUserAnswerActivity sUserAnswerActivity);
+
+    void inject(RegistActivity registActivity);
+
+    void inject(LoginActivity loginActivity);
 }

@@ -44,18 +44,21 @@
             android:theme="@style/MainTheme" />
         <activity
             android:name=".ui.WelcomeActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"></activity>
+        <activity android:name=".ui.FirstActivity" />
+        <activity android:name=".ui.JUserDetailActivity" />
+        <activity android:name=".ui.JUserSendActivity" />
+        <activity android:name=".ui.SUserAnswerActivity" />
+        <activity android:name=".ui.SUserListActivity" />
+        <activity android:name=".ui.RegistActivity">
+        </activity>
+        <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.FirstActivity" />
-        <activity android:name=".ui.JUserDetailActivity" />
-        <activity android:name=".ui.JUserSendActivity" />
-        <activity android:name=".ui.SUserAnswerActivity" />
-        <activity android:name=".ui.SUserListActivity"></activity>
     </application>
 
 </manifest>

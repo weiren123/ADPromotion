@@ -2,6 +2,7 @@ package com.example.administrator.adpromotion.model.api;
 
 import com.example.administrator.adpromotion.model.CommentBean;
 import com.example.administrator.adpromotion.model.FirstBean;
+import com.example.administrator.adpromotion.model.SUserAnswerBean;
 import com.example.administrator.adpromotion.model.SUserListBean;
 import com.example.administrator.adpromotion.model.WelcomeBaen;
 
@@ -17,8 +18,8 @@ import retrofit2.http.Path;
  */
 
 public interface Apis {
-//    String HOST = "http://10.63.205.74:5000/";
-    String HOST = "http://192.168.1.100:5000/";
+    String HOST = "http://10.63.205.74:5000/";
+//    String HOST = "http://192.168.1.100:5000/";
         //192.168.1.104
     @POST("regist/")
     @FormUrlEncoded
@@ -45,4 +46,18 @@ public interface Apis {
     Flowable<CommentBean> addAnswer(@Field("question_id") int questionId,
                                     @Field("answer_content") String content,
                                     @Field("user_id") int user_id);
+
+    @FormUrlEncoded
+    @POST("answers_list/")
+    Flowable<SUserAnswerBean> getSUserListAnswerData(@Field("question_id") int questionId,
+                                                     @Field("user_id") int user_id);
+    @POST("regist/")
+    @FormUrlEncoded
+    Flowable<CommentBean> registUser(@Field("telephone") String telephone,
+                                         @Field("password") String password);
+
+    @POST("login/")
+    @FormUrlEncoded
+    Flowable<CommentBean> loginUser(@Field("telephone") String telephone,
+                                     @Field("password") String password);
 }

@@ -8,6 +8,7 @@
     <string name="MSG020015">请输入手机号</string>
     <string name="MSG020020">请输入验证码</string>
     <string name="MSG020021">请输入密码</string>
+    <string name="MSG020022">请确认密码</string>
     <string name="MSG020013">忘记密码</string>
     <string name="MSG020018">登录</string>
     <string name="MSG020012">没有账号，去注册</string>

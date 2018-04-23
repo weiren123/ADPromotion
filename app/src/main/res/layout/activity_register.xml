@@ -58,36 +58,36 @@
             android:inputType="number"
             android:background="@null" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="20dp">-->
 
-            <EditText
-                android:id="@+id/register_verification"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:drawableLeft="@mipmap/registered_verification"
-                android:drawableBottom="@mipmap/login_line"
-                android:inputType="number"
-                android:hint="@string/MSG020020"
-                android:gravity="center_vertical"
-                android:textSize="14sp"
-                android:textColorHint="@color/unenable_color"
-                android:textColor="@color/colorBack"
-                android:background="@null" />
+            <!--<EditText-->
+                <!--android:id="@+id/register_verification"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:drawableLeft="@mipmap/registered_verification"-->
+                <!--android:drawableBottom="@mipmap/login_line"-->
+                <!--android:inputType="number"-->
+                <!--android:hint="@string/MSG020020"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textSize="14sp"-->
+                <!--android:textColorHint="@color/unenable_color"-->
+                <!--android:textColor="@color/colorBack"-->
+                <!--android:background="@null" />-->
 
-            <TextView
-                android:id="@+id/register_get_verification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBack"
-                android:text="@string/MSG020014"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:layout_centerVertical="true"
-                android:textSize="16sp" />
-        </RelativeLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/register_get_verification"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/colorBack"-->
+                <!--android:text="@string/MSG020014"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:textSize="16sp" />-->
+        <!--</RelativeLayout>-->
 
         <EditText
             android:id="@+id/register_pswd"
@@ -99,6 +99,22 @@
             android:inputType="textPassword"
             android:maxLength="20"
             android:hint="@string/MSG020021"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:textColorHint="@color/unenable_color"
+            android:layout_marginLeft="0dip"
+            android:textColor="@color/colorBack"
+            android:background="@null" />
+        <EditText
+            android:id="@+id/ok_register_pswd"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@mipmap/registered_password"
+            android:drawableBottom="@mipmap/login_line"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:hint="@string/MSG020022"
             android:gravity="center_vertical"
             android:textSize="14sp"
             android:textColorHint="@color/unenable_color"

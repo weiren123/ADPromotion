@@ -1,6 +1,7 @@
 package com.example.administrator.adpromotion.ui;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,7 +14,9 @@ import com.example.administrator.adpromotion.R;
 import com.example.administrator.adpromotion.base.BaseActivity;
 import com.example.administrator.adpromotion.base.contract.SUserAnswerContract;
 import com.example.administrator.adpromotion.model.QuestionBean;
+import com.example.administrator.adpromotion.model.SUserAnswerBean;
 import com.example.administrator.adpromotion.presenter.SUserAnswerPresenter;
+import com.example.administrator.adpromotion.ui.adapter.AUserAnswerAdapter;
 import com.example.administrator.adpromotion.widget.BottomDialog;
 
 import butterknife.BindView;
@@ -39,6 +42,7 @@ public class SUserAnswerActivity extends BaseActivity<SUserAnswerPresenter> impl
     RecyclerView recyclerView;
     private BottomDialog dialog;
     private Button button;
+    private AUserAnswerAdapter aUserAnswerAdapter;
 
     @Override
     protected int getLayoutView() {
@@ -73,6 +77,20 @@ public class SUserAnswerActivity extends BaseActivity<SUserAnswerPresenter> impl
                 showDialog(v,questionBean);
             }
         });
+    }
+
+    @Override
+    public void showAnswersList(SUserAnswerBean sUserAnswerBean) {
+        aUserAnswerAdapter = new AUserAnswerAdapter(sUserAnswerBean);
+        recyclerView.setAdapter(aUserAnswerAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public void refreshView() {
+        if(aUserAnswerAdapter!=null){
+            aUserAnswerAdapter.notifyDataSetChanged();
+        }
     }
 
     public void showDialog(View view, final QuestionBean questionBean) {
