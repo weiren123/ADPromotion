@@ -47,4 +47,9 @@
         <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>
         <item name="@android:windowExitAnimation">@anim/dialog_exit</item>
     </style>
+
+    <style name="loginstyle" parent="android:Theme.NoTitleBar.Fullscreen">
+        <!--<item name="@android:windowEnterAnimation">@anim/dialog_enter</item>-->
+        <!--<item name="@android:windowExitAnimation">@anim/dialog_exit</item>-->
+    </style>
 </resources>

@@ -1,6 +1,9 @@
 package com.example.administrator.adpromotion.ui;
 
 import android.content.Intent;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +35,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     Button loginBtn;
     @BindView(R.id.login_next_register)
     LinearLayout loginNextRegister;
+    private boolean isRegisterToLogin = false;
+    private GestureDetector mGestureDetector ;
 
     @Override
     protected int getLayoutView() {
@@ -40,6 +45,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     protected void initData() {
+        addGestureDetectorExit();
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,5 +82,57 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     public void showErrorMsg(String msg) {
         super.showErrorMsg(msg);
         Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (isRegisterToLogin) {
+//            overridePendingTransition(R.anim.push_top_in, R.anim.below_out);
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        if (isRegisterToLogin) {
+//            overridePendingTransition(R.anim.push_top_in, R.anim.below_out);
+        }
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (mGestureDetector != null) {
+            mGestureDetector.onTouchEvent(event);
+        }
+        return super.onTouchEvent(event);
+    }
+    private void addGestureDetectorExit() {
+
+        mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                // if (Math.abs(e1.getRawX() - e2.getRawX()) > 250) {
+                // LogUtil.print(TAG,"水平方向移动距离过大");
+                // return true;
+                // }
+                if (Math.abs(velocityY) < 100) {
+                    Log.e("11111", "手指移动的太慢了");
+                    return true;
+                }
+
+                // 手势向下 down
+                if ((e2.getRawY() - e1.getRawY()) > 200) {
+                    return true;
+                }
+                // 手势向上 up
+                if ((e1.getRawY() - e2.getRawY()) > 200) {
+                    isRegisterToLogin = true;
+                    Intent intent = new Intent(LoginActivity.this, RegistActivity.class);
+                    startActivity(intent);
+//                    BusinessLauncher.getInstance().startForResult("registerPage", new Intent(), 10001);
+                    return true;
+                }
+                return super.onFling(e1, e2, velocityX, velocityY);
+            }
+        });
     }
 }

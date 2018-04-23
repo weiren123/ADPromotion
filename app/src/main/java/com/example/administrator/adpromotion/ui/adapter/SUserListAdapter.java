@@ -56,7 +56,10 @@ public class SUserListAdapter extends RecyclerView.Adapter<SUserListAdapter.View
 
     @Override
     public int getItemCount() {
-        return sUserListBean.getBody().size();
+        if(sUserListBean.getBody()!=null){
+            return sUserListBean.getBody().size();
+        }
+        return 0;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

@@ -18,8 +18,8 @@ import retrofit2.http.Path;
  */
 
 public interface Apis {
-    String HOST = "http://10.63.205.74:5000/";
-//    String HOST = "http://192.168.1.100:5000/";
+//    String HOST = "http://10.63.205.74:5000/";
+    String HOST = "http://192.168.1.105:5000/";
         //192.168.1.104
     @POST("regist/")
     @FormUrlEncoded
