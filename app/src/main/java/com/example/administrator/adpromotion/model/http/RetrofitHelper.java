@@ -4,6 +4,8 @@ import com.example.administrator.adpromotion.model.CommentBean;
 import com.example.administrator.adpromotion.model.FirstBean;
 import com.example.administrator.adpromotion.model.SUserAnswerBean;
 import com.example.administrator.adpromotion.model.SUserListBean;
+import com.example.administrator.adpromotion.model.SendContentBean;
+import com.example.administrator.adpromotion.model.UserInfobean;
 import com.example.administrator.adpromotion.model.WelcomeBaen;
 import com.example.administrator.adpromotion.model.api.Apis;
 
@@ -59,7 +61,12 @@ public class RetrofitHelper implements HttpHelper {
     }
 
     @Override
-    public Flowable<CommentBean> fetchLoginUser(String s1, String s3) {
+    public Flowable<UserInfobean> fetchLoginUser(String s1, String s3) {
         return apis.loginUser(s1,s3);
+    }
+
+    @Override
+    public Flowable<CommentBean> sendContent(SendContentBean sendContentBean) {
+        return apis.sendContentData(sendContentBean);
     }
 }

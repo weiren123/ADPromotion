@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -88,6 +89,7 @@ public class SUserAnswerActivity extends BaseActivity<SUserAnswerPresenter> impl
 
     @Override
     public void refreshView() {
+
         if(aUserAnswerAdapter!=null){
             aUserAnswerAdapter.notifyDataSetChanged();
         }
@@ -103,10 +105,12 @@ public class SUserAnswerActivity extends BaseActivity<SUserAnswerPresenter> impl
                 height / 2);
         dialog.show();
         button = (Button)dialog.findViewById(R.id.btn);
+        final EditText edContent = (EditText)dialog.findViewById(R.id.ed_content);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.addanswerData(questionBean);
+                String content = edContent.getText().toString();
+                mPresenter.addanswerData(questionBean,content);
                 dialog.dismiss();
             }
         });

@@ -15,7 +15,7 @@ public interface JUserContract {
     interface View extends BaseView{
         void showUserInfo(Map params);
 
-        void eventSend(int str);
+        void eventSend(int userId, int str);
     }
     interface Presenter extends BasePresenter<View>{
         void getJuserDataInfo();

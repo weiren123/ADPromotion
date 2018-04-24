@@ -31,7 +31,13 @@
                 android:text="发送"
                 android:textSize="18sp" />
         </RelativeLayout>
-
+        <EditText
+            android:id="@+id/ed_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="请输入标题"
+            android:textSize="14sp"
+            android:padding="10dp"/>
         <EditText
             android:id="@+id/et_conntent"
             android:layout_width="match_parent"
@@ -40,6 +46,7 @@
             android:background="@color/colorBack"
             android:hint="请输入..."
             android:isScrollContainer="true"
+            android:gravity="top"
             android:textSize="18sp" />
 
     </LinearLayout>

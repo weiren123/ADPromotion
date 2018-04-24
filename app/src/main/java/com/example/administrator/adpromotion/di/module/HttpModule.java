@@ -8,6 +8,9 @@ import com.example.administrator.adpromotion.utils.SystemUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -16,6 +19,9 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -96,6 +102,28 @@ public class HttpModule {
         builder.writeTimeout(20, TimeUnit.SECONDS);
         //错误重连
         builder.retryOnConnectionFailure(true);
+        //添加cookie
+        builder.cookieJar(new CookieJar() {
+            private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
+            @Override
+            public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+                cookieStore.put(url, cookies);
+                cookieStore.put(HttpUrl.parse("http://10.63.205.74:5000/"), cookies);
+                for(Cookie cookie:cookies){
+                    System.out.println("cookie Name:"+cookie.name());
+                    System.out.println("cookie Path:"+cookie.path());
+                }
+            }
+
+            @Override
+            public List<Cookie> loadForRequest(HttpUrl url) {
+                List<Cookie> cookies = cookieStore.get(HttpUrl.parse("http://10.63.205.74:5000/"));
+                if(cookies==null){
+                    System.out.println("没加载到cookie");
+                }
+                return cookies != null ? cookies : new ArrayList<Cookie>();
+        }
+        });
         return builder.build();
     }
     private Retrofit createRetrofit(Retrofit.Builder builder, OkHttpClient client,String url){

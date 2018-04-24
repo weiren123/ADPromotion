@@ -24,6 +24,8 @@ public class JUserSendActivity extends BaseActivity<JUserSendPresenter> implemen
     TextView tvSend;
     @BindView(R.id.et_conntent)
     EditText etConntent;
+    @BindView(R.id.ed_title)
+    EditText edTitle;
     @BindView(R.id.tv_show_title)
     TextView tvShowTitle;
     @BindView(R.id.tv_show_module)
@@ -38,21 +40,21 @@ public class JUserSendActivity extends BaseActivity<JUserSendPresenter> implemen
 
     @Override
     protected void initData() {
-        final int answerId = getIntent().getIntExtra("userid",0);
+        final int userId = getIntent().getIntExtra("userid",0);
+        final int answerId = getIntent().getIntExtra("answerid",0);
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        final String title = "说好的圣诞节";
-        final int userId = 1;
         final SendContentBean sendContentBean = new SendContentBean();
 
         tvSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String content = etConntent.getText().toString();
+                String title = edTitle.getText().toString();
                 sendContentBean.setAnswer_id(answerId);
                 sendContentBean.setContent(content);
                 sendContentBean.setTitle(title);

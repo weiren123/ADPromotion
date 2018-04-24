@@ -46,13 +46,14 @@ public class SUserAnswerPresenter extends RxPresenter<SUserAnswerContract.View> 
     }
 
     @Override
-    public void addanswerData(QuestionBean questionBean) {
-        addSubscribe(mDataManager.fetchaddAnswerData(questionBean.getUserId(),questionBean.getContent()
-        ,questionBean.getUserId())
+    public void addanswerData(final QuestionBean questionBean, String content) {
+        addSubscribe(mDataManager.fetchaddAnswerData(questionBean.getUserId(),content
+                ,questionBean.getAnswerId())
         .compose(RxUtil.<CommentBean>rxSchedulerHelper())
         .subscribe(new Consumer<CommentBean>() {
             @Override
             public void accept(@NonNull CommentBean commentBean) throws Exception {
+                getSUserAnswerData(questionBean);
                 mView.refreshView();
                 Logger.e("commentBean:"+commentBean.getMsg());
             }
@@ -64,9 +65,8 @@ public class SUserAnswerPresenter extends RxPresenter<SUserAnswerContract.View> 
         }));
     }
 
-    @Override
     public void getSUserAnswerData(QuestionBean questionBean) {
-        addSubscribe(mDataManager.fetchanswerListData(questionBean.getAnswerId(),questionBean.getUserId())
+        addSubscribe(mDataManager.fetchanswerListData(questionBean.getUserId(),questionBean.getAnswerId())
         .compose(RxUtil.<SUserAnswerBean>rxSchedulerHelper())
         .subscribe(new Consumer<SUserAnswerBean>() {
             @Override

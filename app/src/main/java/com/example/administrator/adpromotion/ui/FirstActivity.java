@@ -11,6 +11,7 @@ import com.example.administrator.adpromotion.base.BaseActivity;
 import com.example.administrator.adpromotion.base.contract.FirstContract;
 import com.example.administrator.adpromotion.component.GlideImageLoader;
 import com.example.administrator.adpromotion.model.FirstBean;
+import com.example.administrator.adpromotion.model.UserInfobean;
 import com.example.administrator.adpromotion.presenter.FirstPresenter;
 import com.example.administrator.adpromotion.ui.adapter.FirsrAdapter;
 import com.example.administrator.adpromotion.ui.comment.OnItemClickListener;
@@ -37,6 +38,7 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
     ArrayList titles = new ArrayList<>();
     ArrayList images = new ArrayList<>();
     private FirsrAdapter mAdapter;
+    private int userId;
 
     @Override
     protected int getLayoutView() {
@@ -45,6 +47,9 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
 
     @Override
     protected void initData() {
+        UserInfobean userInfo = (UserInfobean) getIntent().getSerializableExtra("userInfo");
+        userId = userInfo.getBody().getUser_id();
+
         mPresenter.getFirstData();
     }
 
@@ -86,12 +91,13 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
                 @Override
                 public void onItemClick(View view, int position) {
                     Intent intent =new Intent(getBaseContext(),JUserDetailActivity.class);
-                    intent.putExtra("userid",firstBean.getBody().get(position).getUserid());
+                    intent.putExtra("userid",userId);
                     intent.putExtra("userage",firstBean.getBody().get(position).getAge());
                     intent.putExtra("useravatar",firstBean.getBody().get(position).getAvatar());
                     intent.putExtra("username",firstBean.getBody().get(position).getUsername());
                     intent.putExtra("usersex",firstBean.getBody().get(position).getSex());
                     intent.putExtra("userbirthday",firstBean.getBody().get(position).getBirthday());
+                    intent.putExtra("answerid",firstBean.getBody().get(position).getUserid());
                     startActivity(intent);
                 }
             });
@@ -100,7 +106,7 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(getBaseContext(),SUserListActivity.class);
-                intent.putExtra("user_id",1);
+                intent.putExtra("user_id",userId);
                 startActivity(intent);
             }
         });
@@ -108,7 +114,7 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(getBaseContext(),SUserListActivity.class);
-                intent.putExtra("user_id",1);
+                intent.putExtra("user_id",userId);
                 startActivity(intent);
             }
         });

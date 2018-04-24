@@ -24,8 +24,8 @@ public interface SUserAnswerContract {
     interface Presenter extends BasePresenter<View>{
         void getPreActivityData(Activity activity);
 
-        void addanswerData(QuestionBean questionBean);
+        void addanswerData(QuestionBean questionBean,String content);
 
-        void getSUserAnswerData(QuestionBean questionBean);
+//        void getSUserAnswerData(QuestionBean questionBean);
     }
 }

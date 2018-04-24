@@ -2,8 +2,8 @@ package com.example.administrator.adpromotion.presenter;
 
 import com.example.administrator.adpromotion.base.RxPresenter;
 import com.example.administrator.adpromotion.base.contract.LoginContract;
-import com.example.administrator.adpromotion.model.CommentBean;
 import com.example.administrator.adpromotion.model.DataManager;
+import com.example.administrator.adpromotion.model.UserInfobean;
 import com.example.administrator.adpromotion.utils.RxUtil;
 
 import javax.inject.Inject;
@@ -25,14 +25,14 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
     @Override
     public void login(String phone,String pwd) {
         addSubscribe(mDataManager.fetchLoginUser(phone,pwd)
-        .compose(RxUtil.<CommentBean>rxSchedulerHelper())
-        .subscribe(new Consumer<CommentBean>() {
+        .compose(RxUtil.<UserInfobean>rxSchedulerHelper())
+        .subscribe(new Consumer<UserInfobean>() {
             @Override
-            public void accept(@NonNull CommentBean commentBean) throws Exception {
-                if("success".equals(commentBean.getCode())){
-                    mView.joinMain();
+            public void accept(@NonNull UserInfobean userInfobean) throws Exception {
+                if("success".equals(userInfobean.getCode())){
+                    mView.joinMain(userInfobean);
                 }else {
-                    mView.showErrorMsg(commentBean.getMsg());
+                    mView.showErrorMsg(userInfobean.getMsg());
                 }
             }
         }, new Consumer<Throwable>() {

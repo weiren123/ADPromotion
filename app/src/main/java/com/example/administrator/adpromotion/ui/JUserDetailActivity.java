@@ -69,12 +69,13 @@ public class JUserDetailActivity extends BaseActivity<JUserPresenter> implements
     }
 
     @Override
-    public void eventSend(final int userId) {
+    public void eventSend(final int userId, final int answerId) {
         txSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),JUserSendActivity.class);
                 intent.putExtra("userid",userId);
+                intent.putExtra("answerid",answerId);
                 startActivity(intent);
             }
         });

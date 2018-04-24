@@ -4,6 +4,8 @@ import com.example.administrator.adpromotion.model.CommentBean;
 import com.example.administrator.adpromotion.model.FirstBean;
 import com.example.administrator.adpromotion.model.SUserAnswerBean;
 import com.example.administrator.adpromotion.model.SUserListBean;
+import com.example.administrator.adpromotion.model.SendContentBean;
+import com.example.administrator.adpromotion.model.UserInfobean;
 import com.example.administrator.adpromotion.model.WelcomeBaen;
 
 import io.reactivex.Flowable;
@@ -28,5 +30,7 @@ public interface HttpHelper {
 
     Flowable<CommentBean> fetchregistUser(String s1, String s3);
 
-    Flowable<CommentBean> fetchLoginUser(String s1, String s3);
+    Flowable<UserInfobean> fetchLoginUser(String s1, String s3);
+
+    Flowable<CommentBean> sendContent(SendContentBean sendContentBean);
 }

@@ -53,8 +53,13 @@ public class DataManager implements HttpHelper,Preferenceshelper {
     }
 
     @Override
-    public Flowable<CommentBean> fetchLoginUser(String s1, String s3) {
+    public Flowable<UserInfobean> fetchLoginUser(String s1, String s3) {
         return httpHelper.fetchLoginUser(s1,s3);
+    }
+
+    @Override
+    public Flowable<CommentBean> sendContent(SendContentBean sendContentBean) {
+        return httpHelper.sendContent(sendContentBean);
     }
 
     @Override

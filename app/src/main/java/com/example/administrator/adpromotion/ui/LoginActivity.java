@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.administrator.adpromotion.R;
 import com.example.administrator.adpromotion.base.BaseActivity;
 import com.example.administrator.adpromotion.base.contract.LoginContract;
+import com.example.administrator.adpromotion.model.UserInfobean;
 import com.example.administrator.adpromotion.presenter.LoginPresenter;
 
 import butterknife.BindView;
@@ -71,8 +72,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
     @Override
-    public void joinMain() {
+    public void joinMain(UserInfobean userInfobean) {
         Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
+        intent.putExtra("userInfo",userInfobean);
         startActivity(intent);
         finish();
     }

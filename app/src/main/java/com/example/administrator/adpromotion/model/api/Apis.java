@@ -4,9 +4,12 @@ import com.example.administrator.adpromotion.model.CommentBean;
 import com.example.administrator.adpromotion.model.FirstBean;
 import com.example.administrator.adpromotion.model.SUserAnswerBean;
 import com.example.administrator.adpromotion.model.SUserListBean;
+import com.example.administrator.adpromotion.model.SendContentBean;
+import com.example.administrator.adpromotion.model.UserInfobean;
 import com.example.administrator.adpromotion.model.WelcomeBaen;
 
 import io.reactivex.Flowable;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -18,8 +21,8 @@ import retrofit2.http.Path;
  */
 
 public interface Apis {
-//    String HOST = "http://10.63.205.74:5000/";
-    String HOST = "http://192.168.1.105:5000/";
+    String HOST = "http://10.63.205.74:5000/";
+//    String HOST = "http://192.168.1.105:5000/";
         //192.168.1.104
     @POST("regist/")
     @FormUrlEncoded
@@ -36,6 +39,9 @@ public interface Apis {
                                       @Field("title") String title,
                                       @Field("content") String content,
                                       @Field("user_id") int user_id);
+
+    @POST("question/")
+    Flowable<CommentBean> sendContentData(@Body SendContentBean sendContentBean);
 //    @POST("question/")
 //    Flowable<CommentBean> sendContent(@Field() SendContentBean sendContentBean);
     @GET("detail/{id}")
@@ -45,7 +51,7 @@ public interface Apis {
     @POST("add_answer/")
     Flowable<CommentBean> addAnswer(@Field("question_id") int questionId,
                                     @Field("answer_content") String content,
-                                    @Field("user_id") int user_id);
+                                    @Field("answer_id") int user_id);
 
     @FormUrlEncoded
     @POST("answers_list/")
@@ -58,6 +64,6 @@ public interface Apis {
 
     @POST("login/")
     @FormUrlEncoded
-    Flowable<CommentBean> loginUser(@Field("telephone") String telephone,
+    Flowable<UserInfobean> loginUser(@Field("telephone") String telephone,
                                      @Field("password") String password);
 }

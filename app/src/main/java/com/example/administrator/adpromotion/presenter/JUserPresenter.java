@@ -49,6 +49,7 @@ public class JUserPresenter extends RxPresenter<JUserContract.View> implements J
     @Override
     public void getFirsrData(Activity context) {
         int userId = context.getIntent().getIntExtra("userid",0);
+        int answerid = context.getIntent().getIntExtra("answerid", 0);
         String userAge = context.getIntent().getStringExtra("userage");
         String userAvatar = context.getIntent().getStringExtra("useravatar");
         String userName = context.getIntent().getStringExtra("username");
@@ -61,6 +62,6 @@ public class JUserPresenter extends RxPresenter<JUserContract.View> implements J
         params.put("userbirthday",userBirthday);
         params.put("usersex",userSex);
         mView.showUserInfo(params);
-        mView.eventSend(userId);
+        mView.eventSend(userId,answerid);
     }
 }
