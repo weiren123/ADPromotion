@@ -11,4 +11,5 @@
     <color name="btn_bg">#e45e10</color>
     <color name="red">#FF4120</color>
     <color name="unenable_color">#999999</color>
+    <color name="theme_color">#3b9beb</color>
 </resources>

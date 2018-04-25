@@ -105,7 +105,7 @@ public class FirstActivity extends BaseActivity<FirstPresenter> implements First
         tvJuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getBaseContext(),SUserListActivity.class);
+                Intent intent =new Intent(getBaseContext(),HRichEditorActivity.class);
                 intent.putExtra("user_id",userId);
                 startActivity(intent);
             }

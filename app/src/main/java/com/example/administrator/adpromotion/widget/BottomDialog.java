@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.administrator.adpromotion.R;
 
@@ -20,5 +21,11 @@ public class BottomDialog extends Dialog {
         window.setBackgroundDrawable(new ColorDrawable(0xFFFFFF));
         window.setGravity(Gravity.BOTTOM);
         window.setWindowAnimations(R.style.mystyle);
+
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE| WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        WindowManager.LayoutParams wlp = window.getAttributes();
+        wlp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        wlp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        window.setAttributes(wlp);
     }
 }
