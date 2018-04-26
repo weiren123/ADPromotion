@@ -4,6 +4,7 @@ import com.example.administrator.adpromotion.model.http.HttpHelper;
 import com.example.administrator.adpromotion.model.prefs.Preferenceshelper;
 
 import io.reactivex.Flowable;
+import okhttp3.MultipartBody;
 
 /**
  * Created by Administrator on 2018/4/4.
@@ -60,6 +61,11 @@ public class DataManager implements HttpHelper,Preferenceshelper {
     @Override
     public Flowable<CommentBean> sendContent(SendContentBean sendContentBean) {
         return httpHelper.sendContent(sendContentBean);
+    }
+
+    @Override
+    public Flowable<CommentBean> uploadImg(MultipartBody.Part file) {
+        return httpHelper.uploadImg(file);
     }
 
     @Override

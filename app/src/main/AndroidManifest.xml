@@ -27,7 +27,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <!-- 访问网络的变化, 需要某些信息用于网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.CAMERA" />
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -52,7 +52,7 @@
         <activity android:name=".ui.SUserListActivity" />
         <activity
             android:name=".ui.RegistActivity"
-            android:theme="@style/loginstyle"></activity>
+            android:theme="@style/loginstyle" />
         <activity
             android:name=".ui.LoginActivity"
             android:theme="@style/loginstyle">
@@ -62,9 +62,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.HRichEditorActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden">
-        </activity>
+        <activity
+            android:name=".ui.HRichEditorActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity android:name=".ui.TextEditorActivity"
+            android:theme="@style/transcutestyle"></activity>
     </application>
 
 </manifest>

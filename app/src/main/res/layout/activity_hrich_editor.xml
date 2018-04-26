@@ -38,7 +38,6 @@
                     android:clickable="true"
                     android:ellipsize="end"
                     android:maxLines="2"
-                    android:onClick="onSetTitle"
                     android:text="点击设置标题"
                     android:textColor="#fff"
                     android:textSize="24sp" />
@@ -53,7 +52,7 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/shape_change_bg"
                     android:clickable="true"
-                    android:onClick="onChangeBG"
+                    android:visibility="gone"
                     android:paddingBottom="2dp"
                     android:paddingLeft="6dp"
                     android:paddingRight="6dp"

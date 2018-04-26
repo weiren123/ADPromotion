@@ -63,5 +63,6 @@ dependencies {
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     compile 'com.tencent.map:tencent-map-vector-sdk:latest.release'
     compile 'com.youth.banner:banner:1.4.10'
+    compile 'com.github.valuesfeng:androidpicturepicker:1.0.0'//图片多选
     testCompile 'junit:junit:4.12'
 }

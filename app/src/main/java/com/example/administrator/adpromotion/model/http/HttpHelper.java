@@ -9,6 +9,7 @@ import com.example.administrator.adpromotion.model.UserInfobean;
 import com.example.administrator.adpromotion.model.WelcomeBaen;
 
 import io.reactivex.Flowable;
+import okhttp3.MultipartBody;
 
 /**
  * Created by Administrator on 2018/4/4.
@@ -33,4 +34,6 @@ public interface HttpHelper {
     Flowable<UserInfobean> fetchLoginUser(String s1, String s3);
 
     Flowable<CommentBean> sendContent(SendContentBean sendContentBean);
+
+    Flowable<CommentBean> uploadImg(MultipartBody.Part partMap);
 }

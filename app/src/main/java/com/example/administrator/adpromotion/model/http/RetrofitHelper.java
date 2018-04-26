@@ -12,6 +12,7 @@ import com.example.administrator.adpromotion.model.api.Apis;
 import javax.inject.Inject;
 
 import io.reactivex.Flowable;
+import okhttp3.MultipartBody;
 
 /**
  * Created by Administrator on 2018/4/4.
@@ -68,5 +69,10 @@ public class RetrofitHelper implements HttpHelper {
     @Override
     public Flowable<CommentBean> sendContent(SendContentBean sendContentBean) {
         return apis.sendContentData(sendContentBean);
+    }
+
+    @Override
+    public Flowable<CommentBean> uploadImg(MultipartBody.Part file) {
+        return apis.uploadImg(file);
     }
 }

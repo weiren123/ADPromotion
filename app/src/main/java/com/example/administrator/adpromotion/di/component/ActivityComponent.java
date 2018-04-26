@@ -6,6 +6,7 @@ import android.app.Activity;
 import com.example.administrator.adpromotion.di.module.ActivityModule;
 import com.example.administrator.adpromotion.di.spoce.ActivityScope;
 import com.example.administrator.adpromotion.ui.FirstActivity;
+import com.example.administrator.adpromotion.ui.HRichEditorActivity;
 import com.example.administrator.adpromotion.ui.JUserDetailActivity;
 import com.example.administrator.adpromotion.ui.JUserSendActivity;
 import com.example.administrator.adpromotion.ui.LoginActivity;
@@ -43,4 +44,6 @@ public interface ActivityComponent {
     void inject(RegistActivity registActivity);
 
     void inject(LoginActivity loginActivity);
+
+    void inject(HRichEditorActivity hRichEditorActivity);
 }

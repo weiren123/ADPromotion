@@ -18,4 +18,5 @@
     <string name="MSG020019">注册</string>
     <string name="txt_click_btn_add_link">点击添加链接</string>
     <string name="txt_not_out_5000words">不能超过5000字</string>
+    <string name="rich_click_add_txt">点击添加文字内容</string>
 </resources>

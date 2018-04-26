@@ -14,7 +14,6 @@
         android:layout_height="fill_parent"
         android:background="#fff">
 
-
         <LinearLayout
             android:id="@+id/ll"
             android:layout_width="fill_parent"
@@ -215,11 +214,19 @@
                 android:id="@+id/ll_font_option_area"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff1efef"
+                android:background="@color/theme_color"
                 android:orientation="horizontal"
                 android:paddingBottom="10.0dip"
                 android:paddingTop="10.0dip">
-
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:onClick="onSubmit"
+                    android:src="@mipmap/right" />
                 <TextView
                     android:id="@+id/tv_txteditor_addlinked"
                     android:layout_width="wrap_content"
