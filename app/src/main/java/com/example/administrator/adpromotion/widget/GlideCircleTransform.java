@@ -40,7 +40,6 @@ public class GlideCircleTransform extends BitmapTransformation {
 //        Bitmap squared = BitmapFactory.decodeByteArray(mdataByte.toByteArray(), 0, mdataByte.size(), mopts).copy(Bitmap.Config.ARGB_8888, true);
 
 
-
         Bitmap result = pool.get(size, size, Bitmap.Config.ARGB_8888);
         if (result == null) {
 //            ByteArrayOutputStream dataByte = new ByteArrayOutputStream();

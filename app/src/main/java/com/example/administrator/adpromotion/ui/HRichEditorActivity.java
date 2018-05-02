@@ -94,7 +94,6 @@ public class HRichEditorActivity extends BaseActivity<HRichPresenter> implements
 
             public void onClick(View v) {
                 File file = new File(result.get(0).toString());
-
                 if(!file.exists()){
                     file.mkdir();
                 }

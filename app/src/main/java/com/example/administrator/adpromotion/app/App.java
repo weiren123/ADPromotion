@@ -8,9 +8,12 @@ import android.support.multidex.MultiDex;
 import com.example.administrator.adpromotion.di.component.AppComponent;
 import com.example.administrator.adpromotion.di.component.DaggerAppComponent;
 import com.example.administrator.adpromotion.di.module.AppModule;
+import com.orhanobut.logger.Logger;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * Created by Administrator on 2018/3/28.
@@ -31,7 +34,11 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-
+        //初始化极光
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+        String registrationID = JPushInterface.getRegistrationID(getApplicationContext());
+        Logger.e("registrationID:"+registrationID);
     }
     @Override
     public void attachBaseContext(Context base) {

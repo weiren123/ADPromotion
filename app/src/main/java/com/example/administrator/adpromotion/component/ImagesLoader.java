@@ -1,6 +1,7 @@
 package com.example.administrator.adpromotion.component;
 
 import android.app.Activity;
+import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -12,11 +13,11 @@ import com.example.administrator.adpromotion.widget.GlideCircleTransform;
  */
 
 public class ImagesLoader {
-//    public static void load(Context context, String url, ImageView iv) {    //使用Glide加载圆形ImageView(如头像)时，不要使用占位图
+    public static void loadImg(Context context, String url, ImageView iv) {    //使用Glide加载圆形ImageView(如头像)时，不要使用占位图
 //        if (!App.getAppComponent().preferencesHelper().getNoImageState()) {
 //            Glide.with(context).load(url).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(iv);
 //        }
-//    }
+    }
     public static void load(Activity activity, String imageurl, ImageView iv){
         if(!activity.isDestroyed()){
             Glide.with(activity).load(imageurl).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE)
