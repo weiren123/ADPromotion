@@ -29,7 +29,7 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
 
     @Override
     public void joinMain() {
-        Intent intent = new Intent(this, FirstActivity.class);
+        Intent intent = new Intent(this, TestSurfaceViewActivity.class);
         startActivity(intent);
         finish();
     }

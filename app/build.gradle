@@ -46,6 +46,8 @@ dependencies {
 
     //最新版本
     compile 'com.android.support:multidex:1.0.1'
+    //图片多选
+
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -69,9 +71,8 @@ dependencies {
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     compile 'com.tencent.map:tencent-map-vector-sdk:latest.release'
     compile 'com.youth.banner:banner:1.4.10'
-    compile 'com.github.valuesfeng:androidpicturepicker:1.0.0'//图片多选
-    testCompile 'junit:junit:4.12'
-
+    compile 'com.github.valuesfeng:androidpicturepicker:1.0.0'
     compile 'cn.jiguang.sdk:jpush:3.0.3'
     compile 'cn.jiguang.sdk:jcore:1.1.1'
+    testCompile 'junit:junit:4.12'
 }
